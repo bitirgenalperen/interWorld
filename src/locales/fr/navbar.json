@@ -1,0 +1,10 @@
+{
+    "home": "Accueil",
+    "projects": "Projets",
+    "bookings": "Réservations",
+    "profile": "Profil",
+    "login": "Se Connecter",
+    "register": "S\"inscrire",
+    "logout": "Se Déconnecter",
+    "changeLanguage": "Changer de Langue"
+}

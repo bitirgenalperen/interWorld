@@ -1,0 +1,10 @@
+{
+    "home": "Anasayfa",
+    "projects": "Projeler",
+    "bookings": "Randevular",
+    "profile": "Profil",
+    "login": "Giriş Yap",
+    "register": "Kayıt Ol",
+    "logout": "Çıkış Yap",
+    "changeLanguage": "Dili Değiştir"
+}

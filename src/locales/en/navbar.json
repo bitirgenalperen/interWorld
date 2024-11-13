@@ -1,0 +1,10 @@
+{
+    "home": "Home",
+    "projects": "Projects",
+    "bookings": "Bookings",
+    "profile": "Profile",
+    "login": "Log In",
+    "register": "Register",
+    "logout": "Log Out",
+    "changeLanguage": "Change Language"
+}

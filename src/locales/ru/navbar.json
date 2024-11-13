@@ -1,0 +1,10 @@
+{
+    "home": "Главная",
+    "projects": "Проекты",
+    "bookings": "Бронирования",
+    "profile": "Профиль",
+    "login": "Войти",
+    "register": "Регистрация",
+    "logout": "Выйти",
+    "changeLanguage": "Сменить язык"
+}
