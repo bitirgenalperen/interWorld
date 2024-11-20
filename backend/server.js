@@ -4,15 +4,13 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const { uri, secret } = require('./envVariables.js');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 const { checkRole } = require('./utils/checkRole.js');
 const User = require('./models/User');
 const Project = require('./models/Project');
 const Booking = require('./models/Booking');
-
-const dotenv = require('dotenv');
-dotenv.config();
 
 // Initialize the app
 const app = express();
@@ -27,7 +25,7 @@ app.use(cors({
 
 // Session configuration
 app.use(session({
-  secret: process.env.SECRET,
+  secret: secret,
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -40,7 +38,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // MongoDB Connection
-mongoose.connect(process.env.URI)
+mongoose.connect(uri)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
