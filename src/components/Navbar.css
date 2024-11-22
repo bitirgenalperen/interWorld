@@ -1,0 +1,14 @@
+.nav-link {
+    color: #0C120C; /* Default navy blue */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #93032E; /* Royal Blue on hover */
+    border-bottom: 2px solid #D8DBBD; /* Add a soft gold underline effect */
+  }
+  
+  .nav-item .nav-link.active {
+    color: #93032E; /* Royal Blue on hover */
+    border-bottom: 2px solid #D8DBBD;
+  }
