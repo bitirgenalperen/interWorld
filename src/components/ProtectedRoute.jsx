@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 const ProtectedRoute = ({ children, isAuthenticated }) => {
   if (isAuthenticated === false) {
     // If the user is not authenticated, redirect to login page
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   // Otherwise, render the child components (protected page)

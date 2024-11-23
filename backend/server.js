@@ -8,6 +8,7 @@ const { uri, secret } = require('./envVariables.js');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 const { checkRole } = require('./utils/checkRole.js');
+const {isAuthenticated} = require('./utils/isAuthenticated.js');
 const User = require('./models/User');
 const Project = require('./models/Project');
 const Booking = require('./models/Booking');
@@ -20,6 +21,7 @@ const port = 5001;
 app.use(express.json());
 app.use(cors({
   origin: 'http://localhost:3000',
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true
 }));
 
@@ -342,7 +344,7 @@ app.get('/api/agents', checkRole(['Manager']), async (req, res) => {
 });
 
 // Get agent
-app.get("/api/agents/:agentId", checkRole(['Manager']), async (req, res) => {
+app.get("/api/agents/:agentId", isAuthenticated, checkRole(['Manager']), async (req, res) => {
   console.log("User in req:", req.user); // Log the authenticated user
   try {
     const { agentId } = req.params;

@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './AgentsPage.css';
 
 const AgentsPage = () => {
   const [agents, setAgents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userRole, setUserRole] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const fetchUserRole = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/api/user', { withCredentials: true });
+        setUserRole(response.data.role);
+        console.log(response.data.role);
+        setIsAuthenticated(true);
+      } catch (error) {
+        setIsAuthenticated(false);
+        console.error('Failed to fetch user details', error);
+      }
+    };
+
     const fetchAgents = async () => {
       try {
         const response = await fetch('http://localhost:5001/api/agents', { credentials: 'include' });
@@ -25,6 +40,7 @@ const AgentsPage = () => {
       }
     };
 
+    fetchUserRole();
     fetchAgents();
   }, []);
 
