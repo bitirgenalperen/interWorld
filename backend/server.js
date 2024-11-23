@@ -83,7 +83,6 @@ app.get('/api/check-auth', (req, res) => {
 // Register a new user
 app.post('/api/register', async (req, res, next) => {
   const { fullName, email, password, comPref, mobilePhone, languages } = req.body; // Added languages
-  console.log(req.body);
 
   if (!fullName || !email || !password) {
     return res.status(400).send('All required fields must be filled');
@@ -226,9 +225,6 @@ app.get('/api/bookings', checkRole(['Client', 'Agent', 'Manager']), async (req, 
     const user = req.user; // Ensure the user object is available
     let bookings;
 
-    // Debugging: log the user object to ensure it's correct
-    console.log('User:', user);
-
     // Fetch bookings based on the role of the user
     if (user.role === 'Client') {
       // Fetch bookings where the user is the client
@@ -268,16 +264,9 @@ app.get('/api/bookings', checkRole(['Client', 'Agent', 'Manager']), async (req, 
           select: 'fullName', // Select the fullName field from the agent
         });
     }
-
-    // Debugging: log the bookings retrieved from the database
-    console.log('Bookings before sorting:', bookings);
-
     // Return the bookings sorted by timeSlot.startTime in ascending order
     bookings = bookings.sort((a, b) => new Date(a.timeSlot.startTime) - new Date(b.timeSlot.startTime));
 
-    // Debugging: log the bookings after sorting
-    console.log('Bookings after sorting:', bookings);
-    
     res.status(200).json(bookings);
   } catch (error) {
     console.error('Error fetching bookings:', error);
@@ -349,6 +338,28 @@ app.get('/api/agents', checkRole(['Manager']), async (req, res) => {
   } catch (error) {
     console.error('Error fetching agents:', error);
     res.status(500).json({ message: 'Failed to fetch agents' });
+  }
+});
+
+// Get agent
+app.get("/api/agents/:agentId", checkRole(['Manager']), async (req, res) => {
+  console.log("User in req:", req.user); // Log the authenticated user
+  try {
+    const { agentId } = req.params;
+    console.log(agentId);
+
+    // Find the agent by ID and ensure the role is 'Agent'
+    const agent = await User.findById(agentId).populate("favorites");
+    console.log(agent);
+    if (!agent) {
+      return res.status(404).json({ error: "Agent not found." });
+    }
+
+    // Respond with the agent's details
+    res.status(200).json(agent);
+  } catch (error) {
+    console.error("Error fetching agent details:", error);
+    res.status(500).json({ error: "An error occurred while fetching agent details." });
   }
 });
 

@@ -6,8 +6,9 @@ import Navbar from './components/Navbar';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import ProjectsPage from './pages/ProjectsPage';
-import AgentsPage from './pages/AgentsPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
+import AgentsPage from './pages/AgentsPage';
+import AgentDetailsPage from './pages/AgentDetailsPage';
 import BookingsPage from './pages/BookingsPage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
@@ -78,6 +79,14 @@ const App = () => {
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <AgentsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/agents/:agentId"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <AgentDetailsPage />
             </ProtectedRoute>
           }
         />
