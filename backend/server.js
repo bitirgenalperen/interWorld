@@ -19,7 +19,7 @@ const port = 5001;
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000', // React server origin
+  origin: 'http://localhost:3000',
   credentials: true
 }));
 
@@ -334,6 +334,21 @@ app.post('/api/bookings', checkRole(['Client', 'Agent']), async (req, res) => {
   } catch (error) {
     console.error('Error creating booking:', error);
     res.status(500).send('Server error');
+  }
+});
+
+
+// Get agents with optional filtering
+app.get('/api/agents', checkRole(['Manager']), async (req, res) => {
+  try {
+    // Fetch users with role 'Agent'
+    const agents = await User.find({ role: 'Agent' }).select('fullName email mobilePhone languages');
+
+    // Send the agents as the response
+    res.status(200).json(agents);
+  } catch (error) {
+    console.error('Error fetching agents:', error);
+    res.status(500).json({ message: 'Failed to fetch agents' });
   }
 });
 

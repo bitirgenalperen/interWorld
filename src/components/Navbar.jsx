@@ -56,6 +56,16 @@ const Navbar = () => {
             </Link>
           </li>
         )}
+        {isAuthenticated && (
+          <li className="nav-item">
+            <Link
+              className={`nav-link ${location.pathname === '/agents' ? 'active' : ''}`}
+              to="/agents"
+            >
+              {i18n.t('navbar.agents')}
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
 

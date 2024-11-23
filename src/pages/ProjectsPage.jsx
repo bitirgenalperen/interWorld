@@ -203,17 +203,7 @@ const ProjectsPage = () => {
             </div>
 
             <div className="mt-3">
-              {isAuthenticated && (userRole === 'Client' || userRole === 'Agent') ? (
-                <>
-                  <button className="btn btn-info mr-2" onClick={() => handleDetails(project._id)}>Details</button>
-                  <button className="btn btn-primary" onClick={() => handleBooking(project._id)}>Book</button>
-                </>
-              ) : isAuthenticated && userRole === 'Manager' ? (
-                <>
-                  <button className="btn btn-warning mr-2" onClick={() => handleEdit(project._id)}>Edit</button>
-                  <button className="btn btn-danger" onClick={() => handleDelete(project._id)}>Delete</button>
-                </>
-              ) : null}
+              <button className="btn btn-info mr-2" onClick={() => handleDetails(project._id)}>Details</button>
             </div>
           </div>
         ))}

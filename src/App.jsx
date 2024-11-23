@@ -6,12 +6,14 @@ import Navbar from './components/Navbar';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import ProjectsPage from './pages/ProjectsPage';
+import AgentsPage from './pages/AgentsPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import BookingsPage from './pages/BookingsPage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
 import LoadingSpinner from './components/LoadingSpinner';
 import ProtectedRoute from './components/ProtectedRoute';
+
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -68,6 +70,14 @@ const App = () => {
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <BookingsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/agents"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <AgentsPage />
             </ProtectedRoute>
           }
         />
