@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AgentsPage.css'; // Import custom CSS for styling
+import './AgentsPage.css';
 
 const AgentsPage = () => {
   const [agents, setAgents] = useState([]);
