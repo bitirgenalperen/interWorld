@@ -1,0 +1,57 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa; /* Optional background */
+  }
+  
+  .signup-form {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .language-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .logo img {
+    max-width: 100px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-control,
+  .form-select {
+    width: 100%;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+  .language-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 1rem; /* Adjust spacing between items */
+    justify-items: center; /* Center items horizontally */
+  }
+  
+  .language-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .language-icon {
+    height: 20px;
+    margin-right: 5px;
+  }
+    
